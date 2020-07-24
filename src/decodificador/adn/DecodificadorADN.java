@@ -15,7 +15,8 @@ public class DecodificadorADN {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Funcionalidad inicio_consola = new Funcionalidad();
+        inicio_consola.Solicitar_Secuencias();
     }
     
 }
