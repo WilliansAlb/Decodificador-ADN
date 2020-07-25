@@ -16,7 +16,9 @@ public class DecodificadorADN {
      */
     public static void main(String[] args) {
         Funcionalidad inicio_consola = new Funcionalidad();
-        inicio_consola.Solicitar_Secuencias();
+        //inicio_consola.Solicitar_Secuencias();
+        Interfaz interfaz_nueva = new Interfaz();
+        interfaz_nueva.show();
     }
     
 }
