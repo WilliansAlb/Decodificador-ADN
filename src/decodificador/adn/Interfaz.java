@@ -24,11 +24,11 @@ import javax.swing.table.DefaultTableModel;
 public class Interfaz extends javax.swing.JFrame {
 
     Detectar nuevo;
+    Funcionalidad funcionando = new Funcionalidad();
+
     /**
      * Creates new form Interfaz
      */
-    Funcionalidad funcionando = new Funcionalidad();
-
     public Interfaz() {
         initComponents();
         setLocationRelativeTo(null);
@@ -36,7 +36,6 @@ public class Interfaz extends javax.swing.JFrame {
         DocumentListener dl;
         Interfaz usando = this;
         dl = new DocumentListener() {
-
             @Override
             public void insertUpdate(DocumentEvent e) {
                 updateFieldState();
@@ -249,6 +248,9 @@ public class Interfaz extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * Metodo que se ejecuta despues de detectar que el usuario dejo de escribir y verifica que los campos de las secuencias cumplan los requisitos para obtener el conjunto ordenado de mayor tamaño
+     */
     public void verificar() {
         if (txt_secuencia1.getText().length() > 1 && txt_secuencia2.getText().length() > 1) {
             jl_secuencia_mayor.setText(funcionando.Decodificar_Version2(txt_secuencia1.getText(), txt_secuencia2.getText()));
@@ -261,7 +263,10 @@ public class Interfaz extends javax.swing.JFrame {
     public JLabel getJl_secuencia_mayor() {
         return jl_secuencia_mayor;
     }
-
+    
+    /**
+     * Metodo que ingresa las secuencias A y B, la secuencia de mayor tamaño que exista en las dos secuencias y el tamaño a una tabla para registrar cada conjunto de secuencias ingresadas
+     */
     public void ingresar_tabla() {
         String mayor = jl_secuencia_mayor.getText();
         Object[] fila = new Object[4];
@@ -279,7 +284,11 @@ public class Interfaz extends javax.swing.JFrame {
         jt_registros.setModel(model);
         centrar_datos(jt_registros);
     }
-
+    
+    /**
+     * Metodo que centra los datos de las filas de la tabla que se le pase
+     * @param table Tabla a la que se le centraran los datos de sus filas
+     */
     public void centrar_datos(JTable table) {
         DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
         tcr.setHorizontalAlignment(SwingConstants.CENTER);

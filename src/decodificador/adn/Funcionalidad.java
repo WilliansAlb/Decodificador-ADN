@@ -21,6 +21,9 @@ public class Funcionalidad {
 
     }
 
+    /**
+     * Metodo que le solicita al usuario que ingrese las secuencias por medio de la consola
+     */
     public void Solicitar_Secuencias() {
         System.out.println("--------------Decodificador ADN-----------------");
         System.out.println("Ingresa la primera secuencia: ");
@@ -31,6 +34,12 @@ public class Funcionalidad {
         System.out.println(Decodificar_Version2(getSecuencia_adn_1(), getSecuencia_adn_2()));
     }
 
+    /**
+     *  Metodo que encuentra conjuntos ordenados que coinciden tanto en la secuencia A como la secuencia B y devuelve el de mayor tamaño
+     * @param secuencia1 Secuencia A ingresada por el usuario
+     * @param secuencia2 Secuencia B ingresada por el usuario
+     * @return Retorna el conjunto ordenado de mayor tamaño existente en las dos secuencias
+     */
     public String Decodificar(String secuencia1, String secuencia2) {
         String secuencia_temporal = secuencia1.charAt(0) + "";
         ArrayList<String> secuencias_encontradas = new ArrayList();
@@ -93,14 +102,19 @@ public class Funcionalidad {
     public void setSecuencia_adn_2(String secuencia_adn_2) {
         this.secuencia_adn_2 = secuencia_adn_2;
     }
-    
-    public String Decodificar_Version2(String secuencia_a, String secuencia_b){
+    /**
+     * Segunda version del metodo que encuentra conjuntos ordenados que coinciden tanto en la secuencia A como la secuencia B y devuelve el de mayor tamaño
+     * @param secuencia_a Secuencia A ingresada por el usuario
+     * @param secuencia_b Secuencia B ingresada por el usuario
+     * @return Retorna el conjunto ordenado de mayor tamaño existente en las dos secuencias
+     */
+    public String Decodificar_Version2(String secuencia_a, String secuencia_b) {
         ArrayList<String> secuencias_encontradas = new ArrayList();
         String secuencia1 = "";
         String secuencia2 = "";
         String secuencia_temporal = "";
-        
-        if (secuencia1.length()>=secuencia2.length()){
+
+        if (secuencia1.length() >= secuencia2.length()) {
             secuencia1 = secuencia_a;
             secuencia2 = secuencia_b;
         } else {
@@ -109,21 +123,21 @@ public class Funcionalidad {
         }
         boolean completado = false;
         int posicion = 0;
-        
-        while (!completado){
-            secuencia_temporal = secuencia1.charAt(posicion)+"";
-            for (int i = (posicion+1); i < secuencia1.length(); i++){
-                if (secuencia2.contains(secuencia_temporal + secuencia1.charAt(i))){
-                    if (i != (secuencia1.length()-1)){
-                        if (secuencia2.contains(secuencia_temporal + secuencia1.charAt(i) + secuencia1.charAt(i+1))){
+
+        while (!completado) {
+            secuencia_temporal = secuencia1.charAt(posicion) + "";
+            for (int i = (posicion + 1); i < secuencia1.length(); i++) {
+                if (secuencia2.contains(secuencia_temporal + secuencia1.charAt(i))) {
+                    if (i != (secuencia1.length() - 1)) {
+                        if (secuencia2.contains(secuencia_temporal + secuencia1.charAt(i) + secuencia1.charAt(i + 1))) {
                             secuencia_temporal += secuencia1.charAt(i);
                         } else {
-                            secuencias_encontradas.add(secuencia_temporal+secuencia1.charAt(i));
+                            secuencias_encontradas.add(secuencia_temporal + secuencia1.charAt(i));
                             posicion++;
                             break;
                         }
                     } else {
-                        secuencias_encontradas.add(secuencia_temporal+secuencia1.charAt(i));
+                        secuencias_encontradas.add(secuencia_temporal + secuencia1.charAt(i));
                         posicion++;
                         break;
                     }
@@ -132,11 +146,11 @@ public class Funcionalidad {
                     break;
                 }
             }
-            completado = posicion == (secuencia1.length()-1);
+            completado = posicion == (secuencia1.length() - 1);
         }
         int posicion_array = 0;
         int tamaño_mayor = 0;
-        
+
         if (secuencias_encontradas.size() > 0) {
             for (int i = 0; i < secuencias_encontradas.size(); i++) {
                 if (i == 0) {
